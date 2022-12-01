@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+
+import glob
+import json
+import frontmatter
+
+files = glob.glob("./public/data/**/*.md")
+
+index = { "content": {}, "persons": {}, "organisations":{}}
+for file in files:
+    record_type = file.split("/")[-2]
+    record_id = file.split("/")[-1].split(".md")[0]
+
+    print(file, "type", record_type, "id", record_id)
+
+    record = frontmatter.load(file)
+    record.metadata["recordType"] = record_type
+    index[record_type][record_id] = {"file": file[1:], "meta": record.metadata}
+
+f = open("index.json", "w" )
+f.write(json.dumps(index))
