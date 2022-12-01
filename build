@@ -17,5 +17,5 @@ for file in files:
     record.metadata["recordType"] = record_type
     index[record_type][record_id] = {"file": file[1:], "meta": record.metadata}
 
-f = open("index.json", "w" )
+f = open("./src/data/index.json", "w" )
 f.write(json.dumps(index))
