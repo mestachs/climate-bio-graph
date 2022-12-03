@@ -5,23 +5,51 @@ import "./App.css";
 import { QueryClient, useQuery } from "@tanstack/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
-const NewLink = ({ href }) => {
+const NewLink = ({ href, children }) => {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      Site
-    </a>
+    <div>
+      <a href={href} target="_blank" rel="noopener noreferrer">
+        {children || "Site"}
+      </a>
+    </div>
   );
 };
 
 const Details = ({ record }) => {
   return (
-    <>
+    <div style={{ margin: "15px", padding: "15px" }}>
       <h1>{record.name}</h1>
-      {record.site && <NewLink href={record.site} />}
-      {record.wikipedia && <NewLink href={record.wikipedia} />}
-      {record.coverUrl && (
-        <img style={{ width: "350px" }} src={record.coverUrl}></img>
+      {record.site && (
+        <NewLink href={record.site}>
+          <i
+            class="fa-solid fa-square-up-right"
+            style={{ paddingRight: "2px" }}
+          ></i>
+          Site
+        </NewLink>
       )}
+      {record.wikipedia && (
+        <NewLink href={record.wikipedia}>
+          <i class="fab fa-wikipedia-w" aria-hidden="true"></i>ikipedia
+        </NewLink>
+      )}
+
+      {record.youtube && (
+        <div>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={record.youtube}
+            style={{
+              textDecoration: "none",
+            }}
+          >
+            <i class="fab fa-youtube"></i>
+            {record.youtube.replaceAll("https://www.youtube.com/", "")}
+          </a>
+        </div>
+      )}
+
       {record.twitter && (
         <div>
           <a
@@ -36,14 +64,40 @@ const Details = ({ record }) => {
           </a>
         </div>
       )}
+
       <div>
         <p>{record.bio}</p>
       </div>
       <div>
         <p>{record.description}</p>
       </div>
-      <pre>{JSON.stringify(record, undefined, 4)}</pre>
-    </>
+      {record.embedAcast && (
+        <iframe
+          src={record.embedAcast}
+          frameBorder="0"
+          width="100%"
+          height="110px"
+          allow="autoplay"
+        ></iframe>
+      )}
+      {record.coverUrl && (
+        <img
+          style={{ width: "350px", borderRadius: "5px" }}
+          src={record.coverUrl}
+        ></img>
+      )}
+      {record.youtubePlaylist && (
+        <iframe
+          width="460"
+          height="315"
+          src={"https://www.youtube.com/embed/" + record.youtubePlaylist}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      )}
+    </div>
   );
 };
 
@@ -102,7 +156,14 @@ function App() {
           setHover={setSelectedNode}
         />
         {selectedNode && (
-          <div style={{ maxWidth: "300px" }}>
+          <div
+            style={{
+              alignSelf: "flex-start",
+              position: "sticky",
+              top: "10px",
+              width: "500px",
+            }}
+          >
             <Details record={selectedNode.record} />
           </div>
         )}
