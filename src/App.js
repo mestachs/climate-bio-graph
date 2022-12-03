@@ -18,6 +18,7 @@ const Details = ({ record }) => {
     <>
       <h1>{record.name}</h1>
       {record.site && <NewLink href={record.site} />}
+      {record.wikipedia && <NewLink href={record.wikipedia} />}
       {record.coverUrl && (
         <img style={{ width: "350px" }} src={record.coverUrl}></img>
       )}
