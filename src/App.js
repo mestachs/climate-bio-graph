@@ -18,9 +18,9 @@ function App() {
   };
 
   const types = [
-    { what: "content", links: ["authors"] },
-    { what: "persons", links: [] },
-    { what: "organisations", links: ["members"] },
+    { what: "content", links: ["authors", "see_also", "appearance"] },
+    { what: "persons", links: ["see_also", "appearance"] },
+    { what: "organisations", links: ["members", "see_also", "appearance"] },
   ];
 
   for (const type of types) {
@@ -46,16 +46,12 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">Force Graph Example</header>
-      <section className="Main">
-        <ForceGraph
-          linksData={climateData.links}
-          nodesData={climateData.nodes}
-          nodeHoverTooltip={nodeHoverTooltip}
-        />
-      </section>
-    </div>
+    <ForceGraph
+      key="force"
+      linksData={climateData.links}
+      nodesData={climateData.nodes}
+      nodeHoverTooltip={nodeHoverTooltip}
+    />
   );
 }
 
