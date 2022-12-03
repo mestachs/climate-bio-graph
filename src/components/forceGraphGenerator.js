@@ -7,7 +7,8 @@ export function runForceGraph(
   container,
   linksData,
   nodesData,
-  nodeHoverTooltip
+  nodeHoverTooltip,
+  setHover
 ) {
   const links = linksData.map((d) => Object.assign({}, d));
   const nodes = nodesData.map((d) => Object.assign({}, d));
@@ -49,7 +50,6 @@ export function runForceGraph(
   };
 
   const getClass = (d) => {
-    debugger;
     return d.record.recordType;
   };
 
@@ -167,13 +167,9 @@ export function runForceGraph(
     .attr("class", (d) => `${getClass(d)}`)
     .call(drag(simulation));
 
-  label
-    .on("mouseover", (d) => {
-      addTooltip(nodeHoverTooltip, d, d3.event.pageX, d3.event.pageY);
-    })
-    .on("mouseout", () => {
-      removeTooltip();
-    });
+  label.on("click", (d) => {
+    setHover(d);
+  });
 
   simulation.on("tick", () => {
     //update link positions

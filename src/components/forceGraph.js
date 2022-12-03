@@ -2,7 +2,12 @@ import React from "react";
 import { runForceGraph } from "./forceGraphGenerator";
 import styles from "./forceGraph.module.css";
 
-export function ForceGraph({ linksData, nodesData, nodeHoverTooltip }) {
+export function ForceGraph({
+  linksData,
+  nodesData,
+  nodeHoverTooltip,
+  setHover,
+}) {
   const containerRef = React.useRef("g");
 
   React.useEffect(() => {
@@ -13,7 +18,8 @@ export function ForceGraph({ linksData, nodesData, nodeHoverTooltip }) {
         containerRef.current,
         linksData,
         nodesData,
-        nodeHoverTooltip
+        nodeHoverTooltip,
+        setHover
       );
       destroyFn = destroy;
     }
