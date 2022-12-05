@@ -80,6 +80,7 @@ const Details = ({ record }) => {
           allow="autoplay"
         ></iframe>
       )}
+      {record.audioUrl && <audio src={record.audioUrl} controls></audio>}
       {record.coverUrl && (
         <img
           style={{ width: "350px", borderRadius: "5px" }}
@@ -155,6 +156,12 @@ function App() {
           nodeHoverTooltip={nodeHoverTooltip}
           setHover={setSelectedNode}
         />
+        {selectedNode == undefined && (
+          <h1>
+            Cliquer sur un des noeuds pour en savoir plus sur la transition
+            énergétique, écologique.
+          </h1>
+        )}
         {selectedNode && (
           <div
             style={{
