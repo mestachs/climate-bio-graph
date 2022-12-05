@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/climate-bio-graph/static/css/main.e1ab85ec.css",
-    "main.js": "/climate-bio-graph/static/js/main.b9259811.js",
+    "main.js": "/climate-bio-graph/static/js/main.abdd292f.js",
     "static/js/787.9a44703f.chunk.js": "/climate-bio-graph/static/js/787.9a44703f.chunk.js",
     "static/media/fa-solid-900.ttf": "/climate-bio-graph/static/media/fa-solid-900.b1a653db79258eeccc5d.ttf",
     "static/media/fa-brands-400.ttf": "/climate-bio-graph/static/media/fa-brands-400.450a5c898f0b184b968b.ttf",
@@ -13,11 +13,11 @@
     "static/media/fa-v4compatibility.woff2": "/climate-bio-graph/static/media/fa-v4compatibility.4ee7f902d88f819e251c.woff2",
     "index.html": "/climate-bio-graph/index.html",
     "main.e1ab85ec.css.map": "/climate-bio-graph/static/css/main.e1ab85ec.css.map",
-    "main.b9259811.js.map": "/climate-bio-graph/static/js/main.b9259811.js.map",
+    "main.abdd292f.js.map": "/climate-bio-graph/static/js/main.abdd292f.js.map",
     "787.9a44703f.chunk.js.map": "/climate-bio-graph/static/js/787.9a44703f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e1ab85ec.css",
-    "static/js/main.b9259811.js"
+    "static/js/main.abdd292f.js"
   ]
 }
